@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<camera-app-specification>
+  <project-setup>
+    <title>Obscura-Inspired Camera App</title>
+    <description>Professional camera app with manual controls, built with Expo and React Native</description>
+    <target-platform>iOS (with Android compatibility)</target-platform>
+    
+    <initialization>
+      <step order="1">
+        <action>Create new Expo project</action>
+        <command>npx create-expo-app ObscuraCameraApp --template</command>
+        <template>TypeScript</template>
+      </step>
+      
+      <step order="2">
+        <action>Install required dependencies</action>
+        <dependencies>
+          <package>expo-camera</package>
+          <package>expo-media-library</package>
+          <package>expo-blur</package>
+          <package>expo-haptics</package>
+          <package>expo-linear-gradient</package>
+          <package>react-native-reanimated</package>
+          <package>react-native-gesture-handler</package>
+          <package>expo-vector-icons</package>
+        </dependencies>
+      </step>
+      
+      <step order="3">
+        <action>Configure app.json</action>
+        <configuration>
+          <plugins>
+            <plugin name="expo-camera">
+              <cameraPermission>Allow $(PRODUCT_NAME) to access your camera</cameraPermission>
+              <microphonePermission>Allow $(PRODUCT_NAME) to access your microphone</microphonePermission>
+              <recordAudioAndroid>true</recordAudioAndroid>
+            </plugin>
+          </plugins>
+        </configuration>
+      </step>
+    </initialization>
+  </project-setup>
+
+  <ui-design>
+    <overall-layout>
+      <description>Full-screen camera preview with overlay controls, dark theme with premium feel</description>
+      <color-scheme>
+        <primary>#000000</primary>
+        <secondary>#1C1C1E</secondary>
+        <accent>#FFFFFF</accent>
+        <text-primary>#FFFFFF</text-primary>
+        <text-secondary>#8E8E93</text-secondary>
+        <highlight>#FF9500</highlight>
+      </color-scheme>
+    </overall-layout>
+
+    <screen-sections>
+      <top-bar>
+        <position>absolute top with safe area</position>
+        <height>80px</height>
+        <background>semi-transparent black with blur effect</background>
+        <elements>
+          <flash-indicator position="left">
+            <icons>
+              <auto>bolt.automatic</auto>
+              <on>bolt.fill</on>
+              <off>bolt.slash</off>
+            </icons>
+          </flash-indicator>
+          <settings-button position="right">
+            <icon>gear</icon>
+          </settings-button>
+        </elements>
+      </top-bar>
+
+      <camera-preview>
+        <position>full screen behind overlays</position>
+        <aspect-ratio>maintain device aspect ratio</aspect-ratio>
+        <features>
+          <focus-indicator>
+            <style>white circle with animation</style>
+            <behavior>tap to focus</behavior>
+          </focus-indicator>
+          <exposure-indicator>
+            <style>sun icon with slider</style>
+            <behavior>drag to adjust exposure</behavior>
+          </exposure-indicator>
+        </features>
+      </camera-preview>
+
+      <bottom-controls>
+        <position>absolute bottom with safe area</position>
+        <height>200px</height>
+        <background>semi-transparent black with blur effect</background>
+        
+        <control-row-1>
+          <position>top of bottom section</position>
+          <elements>
+            <mode-selector position="left">
+              <modes>
+                <photo>PHOTO</photo>
+                <video>VIDEO</video>
+                <portrait>PORTRAIT</portrait>
+              </modes>
+              <style>segmented control appearance</style>
+            </mode-selector>
+            
+            <timer-button position="right">
+              <icon>timer</icon>
+              <options>
+                <off>OFF</off>
+                <three>3s</three>
+                <ten>10s</ten>
+              </options>
+            </timer-button>
+          </elements>
+        </control-row-1>
+
+        <control-row-2>
+          <position>center of bottom section</position>
+          <elements>
+            <gallery-thumbnail position="left">
+              <size>50x50px</size>
+              <style>rounded corners, last captured image</style>
+              <behavior>tap to open gallery</behavior>
+            </gallery-thumbnail>
+            
+            <capture-button position="center">
+              <size>80x80px</size>
+              <style>white circle with inner circle</style>
+              <animation>scale on press</animation>
+              <behavior>
+                <photo>single tap to capture</photo>
+                <video>tap to start/stop recording</video>
+              </behavior>
+            </capture-button>
+            
+            <camera-flip-button position="right">
+              <icon>arrow.triangle.2.circlepath.camera</icon>
+              <behavior>switch between front/back camera</behavior>
+            </camera-flip-button>
+          </elements>
+        </control-row-2>
+
+        <control-row-3>
+          <position>bottom of bottom section</position>
+          <elements>
+            <manual-controls>
+              <iso-control>
+                <label>ISO</label>
+                <values>50, 100, 200, 400, 800, 1600, 3200</values>
+                <display>horizontal scrollable</display>
+              </iso-control>
+              
+              <shutter-speed-control>
+                <label>SHUTTER</label>
+                <values>1/2000, 1/1000, 1/500, 1/250, 1/125, 1/60, 1/30</values>
+                <display>horizontal scrollable</display>
+              </shutter-speed-control>
+              
+              <focus-control>
+                <label>FOCUS</label>
+                <type>slider</type>
+                <range>0.0 to 1.0</range>
+              </focus-control>
+            </manual-controls>
+          </elements>
+        </control-row-3>
+      </bottom-controls>
+
+      <side-controls>
+        <position>right edge, vertically centered</position>
+        <elements>
+          <zoom-control>
+            <style>vertical slider</style>
+            <range>1x to 10x</range>
+            <indicators>1x, 2x, 5x, 10x</indicators>
+          </zoom-control>
+        </elements>
+      </side-controls>
+    </screen-sections>
+  </ui-design>
+
+  <functionality>
+    <camera-features>
+      <basic-capture>
+        <photo-capture>
+          <format>JPEG with EXIF data</format>
+          <quality>high (0.9)</quality>
+          <save-location>device gallery + app cache</save-location>
+        </photo-capture>
+        
+        <video-capture>
+          <format>MP4</format>
+          <quality>1080p at 30fps</quality>
+          <audio>enabled with permission</audio>
+        </video-capture>
+      </basic-capture>
+
+      <manual-controls>
+        <iso-control>
+          <implementation>camera device ISO range</implementation>
+          <ui>horizontal picker with haptic feedback</ui>
+        </iso-control>
+        
+        <shutter-speed>
+          <implementation>camera exposure time</implementation>
+          <ui>horizontal picker with haptic feedback</ui>
+        </shutter-speed>
+        
+        <focus-control>
+          <implementation>manual focus distance</implementation>
+          <ui>vertical slider with live preview</ui>
+        </focus-control>
+        
+        <exposure-compensation>
+          <implementation>camera exposure bias</implementation>
+          <ui>tap and drag gesture on preview</ui>
+        </exposure-compensation>
+      </manual-controls>
+
+      <advanced-features>
+        <tap-to-focus>
+          <behavior>tap anywhere on preview to focus</behavior>
+          <visual-feedback>animated focus ring</visual-feedback>
+        </tap-to-focus>
+        
+        <pinch-to-zoom>
+          <behavior>pinch gesture for zoom control</behavior>
+          <range>1x to maximum device zoom</range>
+        </pinch-to-zoom>
+        
+        <flash-modes>
+          <auto>automatic flash detection</auto>
+          <on>always flash</on>
+          <off>never flash</off>
+          <torch>continuous light</torch>
+        </flash-modes>
+      </advanced-features>
+    </camera-features>
+
+    <state-management>
+      <camera-state>
+        <permissions>camera, microphone, media-library</permissions>
+        <active-camera>front or back</active-camera>
+        <capture-mode>photo, video, portrait</capture-mode>
+        <flash-mode>auto, on, off, torch</flash-mode>
+      </camera-state>
+      
+      <manual-settings>
+        <iso-value>current ISO setting</iso-value>
+        <shutter-speed>current shutter speed</shutter-speed>
+        <focus-distance>current focus distance</focus-distance>
+        <zoom-level>current zoom level</zoom-level>
+      </manual-settings>
+      
+      <ui-state>
+        <controls-visible>show/hide manual controls</controls-visible>
+        <recording-state>idle, recording, paused</recording-state>
+        <last-captured-image>thumbnail for gallery button</last-captured-image>
+      </ui-state>
+    </state-management>
+  </functionality>
+
+  <technical-implementation>
+    <file-structure>
+      <components>
+        <CameraScreen>main camera interface</CameraScreen>
+        <CaptureButton>animated capture button</CaptureButton>
+        <ManualControls>ISO, shutter, focus controls</ManualControls>
+        <FlashControl>flash mode selector</FlashControl>
+        <ZoomSlider>vertical zoom control</ZoomSlider>
+        <FocusIndicator>tap-to-focus visual feedback</FocusIndicator>
+      </components>
+      
+      <hooks>
+        <useCameraPermissions>handle camera permissions</useCameraPermissions>
+        <useCameraSettings>manage manual camera settings</useCameraSettings>
+        <useMediaLibrary>save and retrieve captured media</useMediaLibrary>
+      </hooks>
+      
+      <utils>
+        <cameraHelpers>camera configuration utilities</cameraHelpers>
+        <imageProcessing>image manipulation functions</imageProcessing>
+        <hapticFeedback>tactile feedback helpers</hapticFeedback>
+      </utils>
+    </file-structure>
+
+    <key-libraries>
+      <expo-camera>
+        <version>latest</version>
+        <usage>main camera functionality</usage>
+        <features>CameraView, useCameraPermissions, Camera.Constants</features>
+      </expo-camera>
+      
+      <react-native-reanimated>
+        <version>3.x</version>
+        <usage>smooth animations and gestures</usage>
+        <features>useSharedValue, useAnimatedStyle, withSpring</features>
+      </react-native-reanimated>
+      
+      <react-native-gesture-handler>
+        <version>2.x</version>
+        <usage>tap, pinch, and pan gestures</usage>
+        <features>TapGestureHandler, PinchGestureHandler</features>
+      </react-native-gesture-handler>
+    </key-libraries>
+
+    <performance-considerations>
+      <camera-optimization>
+        <unmount-when-inactive>unmount camera when app backgrounded</unmount-when-inactive>
+        <single-camera-instance>only one camera active at a time</single-camera-instance>
+        <efficient-preview>optimize preview resolution for device</efficient-preview>
+      </camera-optimization>
+      
+      <ui-optimization>
+        <lazy-loading>load heavy components only when needed</lazy-loading>
+        <memoization>memoize expensive calculations</memoization>
+        <gesture-optimization>debounce rapid gesture events</gesture-optimization>
+      </ui-optimization>
+    </performance-considerations>
+  </technical-implementation>
+
+  <user-experience>
+    <interactions>
+      <haptic-feedback>
+        <capture>medium impact on photo capture</capture>
+        <focus>light impact on tap to focus</focus>
+        <control-change>selection feedback on manual controls</control-change>
+      </haptic-feedback>
+      
+      <animations>
+        <capture-button>scale animation on press</capture-button>
+        <focus-ring>fade in/out with scale</focus-ring>
+        <control-transitions>smooth slide animations</control-transitions>
+        <mode-switching>cross-fade between modes</mode-switching>
+      </animations>
+      
+      <gestures>
+        <tap-to-focus>single tap anywhere on preview</tap-to-focus>
+        <pinch-to-zoom>pinch gesture for zoom</pinch-to-zoom>
+        <swipe-modes>horizontal swipe to change modes</swipe-modes>
+        <drag-exposure>vertical drag for exposure adjustment</drag-exposure>
+      </gestures>
+    </interactions>
+
+    <accessibility>
+      <voice-over>
+        <capture-button>Double tap to take photo</capture-button>
+        <manual-controls>Adjustable slider for [control name]</manual-controls>
+        <mode-selector>Camera mode selector</mode-selector>
+      </voice-over>
+      
+      <high-contrast>
+        <support>adapt colors for high contrast mode</support>
+        <focus-indicators>enhanced visibility for focus elements</focus-indicators>
+      </high-contrast>
+    </accessibility>
+  </user-experience>
+
+  <testing-requirements>
+    <device-testing>
+      <ios-devices>iPhone 12, 13, 14, 15 series</ios-devices>
+      <android-devices>Pixel, Samsung Galaxy series</android-devices>
+      <camera-features>test all camera hardware features</camera-features>
+    </device-testing>
+    
+    <permission-testing>
+      <scenarios>
+        <granted>all permissions granted</granted>
+        <denied>camera permission denied</denied>
+        <partial>camera granted, microphone denied</partial>
+      </scenarios>
+    </permission-testing>
+    
+    <performance-testing>
+      <memory-usage>monitor memory during extended use</memory-usage>
+      <battery-impact>test battery drain during video recording</battery-impact>
+      <thermal-management>test behavior under thermal stress</thermal-management>
+    </performance-testing>
+  </testing-requirements>
+
+  <deployment>
+    <build-configuration>
+      <ios>
+        <bundle-id>com.yourname.obscuracamera</bundle-id>
+        <deployment-target>iOS 13.0+</deployment-target>
+        <permissions>camera, microphone, photo-library</permissions>
+      </ios>
+      
+      <android>
+        <package-name>com.yourname.obscuracamera</package-name>
+        <min-sdk-version>21</min-sdk-version>
+        <permissions>CAMERA, RECORD_AUDIO, WRITE_EXTERNAL_STORAGE</permissions>
+      </android>
+    </build-configuration>
+    
+    <app-store-optimization>
+      <keywords>camera, photography, manual controls, professional</keywords>
+      <description>Professional camera app with manual controls inspired by Obscura</description>
+      <screenshots>showcase manual controls and UI design</screenshots>
+    </app-store-optimization>
+  </deployment>
+</camera-app-specification>
