@@ -1,50 +1,116 @@
-# Welcome to your Expo app 👋
+# 📱 VTOP Chennai (Unofficial) – React Native + Node.js
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+> A lightweight React Native app built with Expo that fetches your VTOP data on demand using a refresh button. Powered by a backend scraper using Node.js + cheerio or Jsoup.
 
-## Get started
+---
 
-1. Install dependencies
+## 🚀 Features
 
-   ```bash
-   npm install
-   ```
+- 📅 View timetable, attendance, grades, and more
+- 🔐 Secure credential storage (locally on device)
+- 🔄 One-tap refresh to sync with VTOP
+- 🌐 Expo-friendly: No Mac required to publish to TestFlight!
+- 🔧 Modular backend for scraping data from VTOP
+- 🗃️ Offline-first: Uses cached data when offline
 
-2. Start the app
+---
 
-   ```bash
-   npx expo start
-   ```
+## 📦 Tech Stack
 
-In the output, you'll find options to open the app in a
+| Layer        | Stack                        |
+|--------------|------------------------------|
+| Frontend     | React Native (with Expo)     |
+| Backend      | Node.js + Express + cheerio  |
+| Local Storage| AsyncStorage / SecureStore   |
+| Build        | EAS Build (for iOS)          |
+| Hosting      | Vercel / Render (for backend)|
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+---
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## 🧱 Folder Structure
 
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
+```
+vtop-app/
+├── frontend/                # React Native (Expo) project
+│   ├── App.js
+│   ├── screens/
+│   ├── components/
+│   └── utils/
+└── backend/                 # Express.js scraper server
+    ├── index.js
+    ├── scraper/
+    │   └── vtopScraper.js
+    └── routes/
+        └── fetchData.js
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+---
 
-## Learn more
+## 🔐 Secure Credentials (Frontend)
 
-To learn more about developing your project with Expo, look at the following resources:
+Uses `expo-secure-store` to save and reuse VTOP login credentials. These are never sent or saved outside the device.
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+---
 
-## Join the community
+## 🧠 How It Works
 
-Join our community of developers creating universal apps.
+1. User taps `Refresh`
+2. Expo app sends credentials to backend
+3. Backend logs into VTOP and scrapes data using cheerio or Jsoup
+4. JSON is returned → app displays updated data
+5. Data is saved locally for offline use
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+---
+
+## 🛠️ Setup Instructions
+
+### 🖥️ Backend
+
+```bash
+cd backend
+npm install
+node index.js
+```
+
+- Use `.env` to store backend secrets and configs
+- Exposes `POST /api/fetch` endpoint for VTOP scraping
+
+---
+
+### 📱 Frontend (Expo)
+
+```bash
+cd frontend
+npm install
+npx expo start
+```
+
+- Install EAS CLI:
+  ```bash
+  npm install -g eas-cli
+  eas login
+  ```
+- To build for iOS:
+  ```bash
+  eas build -p ios --profile preview
+  ```
+
+---
+
+## ⚠️ Disclaimers
+
+- This is an **unofficial** app. Use at your own risk.
+- Login credentials are stored only on device; backend does **not store or log** any user data.
+- Respect VTOP's usage policies.
+
+---
+
+## 🤝 Contributing
+
+Feel free to fork and PR. Add scraping modules, calendar sync, notifications, or push updates.
+
+---
+
+## 📜 License
+
+MIT © Atul + Contributors
