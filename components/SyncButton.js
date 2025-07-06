@@ -17,7 +17,7 @@ const SyncButton = () => {
   const [savedFiles, setSavedFiles] = useState([]);
   const [credentials, setCredentials] = useState({ username: '', password: '' });
   const [hasCredentials, setHasCredentials] = useState(false);
-  const [serverUrl, setServerUrl] = useState('http://192.168.1.100:3000');
+  const [serverUrl, setServerUrl] = useState('http://192.168.1.100:3000'); // Update with your IP
   const [serverStatus, setServerStatus] = useState(null);
   const [storageStats, setStorageStats] = useState(null);
 
@@ -102,10 +102,14 @@ const SyncButton = () => {
       console.log('🔄 Starting sync process...');
       
       // Step 1: Scrape data from VTOP
+      console.log('📊 Step 1: Scraping VTOP data...');
       const scrapedData = await vtopScraper.scrapeAllData();
+      console.log('✅ Step 1 completed: Data scraped successfully');
       
       // Step 2: Save to JSON files
+      console.log('💾 Step 2: Saving data to local files...');
       await storageManager.saveVTOPData(scrapedData);
+      console.log('✅ Step 2 completed: Data saved locally');
       
       // Step 3: Update file list and stats
       await loadSavedFiles();
@@ -121,7 +125,7 @@ const SyncButton = () => {
       
       Alert.alert(
         'Sync Successful! 🎉',
-        `${pathsMessage}\n\nYou can now manually inspect these JSON files.`,
+        `${pathsMessage}\n\nYou can now manually inspect these JSON files or upload them to your server.`,
         [{ text: 'OK' }]
       );
       
@@ -144,10 +148,12 @@ const SyncButton = () => {
       setIsLoading(true);
       
       // First test connection
+      console.log('🔗 Testing server connection...');
       const connectionTest = await storageManager.testServerConnection(serverUrl);
       if (!connectionTest.success) {
         throw new Error(`Cannot connect to server: ${connectionTest.error}`);
       }
+      console.log('✅ Server connection verified');
 
       Alert.alert(
         'Upload to Server',
@@ -158,6 +164,7 @@ const SyncButton = () => {
             text: 'Upload',
             onPress: async () => {
               try {
+                console.log('📤 Starting file upload...');
                 const results = await storageManager.uploadAllFilesToServer(serverUrl);
                 
                 let successCount = 0;
@@ -185,8 +192,10 @@ const SyncButton = () => {
                 }
 
                 Alert.alert('Upload Complete', message);
+                console.log('✅ Upload process completed');
               } catch (error) {
                 Alert.alert('Upload Error', error.message);
+                console.error('❌ Upload failed:', error);
               }
             }
           }
@@ -204,16 +213,25 @@ const SyncButton = () => {
       setIsLoading(true);
       
       // Step 1: Sync data from VTOP
-      console.log('🔄 Syncing VTOP data...');
+      console.log('🔄 Step 1: Syncing VTOP data...');
       const scrapedData = await vtopScraper.scrapeAllData();
       await storageManager.saveVTOPData(scrapedData);
+      console.log('✅ Step 1 completed: Data synced and saved');
       
       // Step 2: Update file list
       await loadSavedFiles();
       await loadStorageStats();
       
-      // Step 3: Upload to server
-      console.log('📤 Uploading to server...');
+      // Step 3: Test server connection
+      console.log('🔗 Step 2: Testing server connection...');
+      const connectionTest = await storageManager.testServerConnection(serverUrl);
+      if (!connectionTest.success) {
+        throw new Error(`Cannot connect to server: ${connectionTest.error}`);
+      }
+      console.log('✅ Step 2 completed: Server connection verified');
+      
+      // Step 4: Upload to server
+      console.log('📤 Step 3: Uploading files to server...');
       const uploadResults = await storageManager.uploadAllFilesToServer(serverUrl);
       
       let successCount = uploadResults.filter(r => r.success).length;
@@ -225,8 +243,11 @@ const SyncButton = () => {
         [{ text: 'OK' }]
       );
       
+      console.log('✅ Sync and upload process completed successfully');
+      
     } catch (error) {
       Alert.alert('Error', `Sync and upload failed: ${error.message}`);
+      console.error('❌ Sync and upload failed:', error);
     } finally {
       setIsLoading(false);
     }
@@ -234,22 +255,59 @@ const SyncButton = () => {
 
   const handleClearData = () => {
     Alert.alert(
-      'Clear All Data',
-      'This will permanently delete all stored VTOP data. Are you sure?',
+      'Clear Data Options',
+      'What would you like to clear?',
       [
         { text: 'Cancel', style: 'cancel' },
         {
-          text: 'Clear',
-          style: 'destructive',
+          text: 'Clear Files Only',
           onPress: async () => {
             try {
-              await storageManager.clearAllData();
+              await storageManager.clearFilesOnly();
               setSavedFiles([]);
               setStorageStats(null);
-              Alert.alert('Success', 'All data cleared successfully.');
+              Alert.alert('Success', 'VTOP data files cleared. Credentials preserved.');
             } catch (error) {
-              Alert.alert('Error', 'Failed to clear data.');
+              Alert.alert('Error', 'Failed to clear files.');
             }
+          }
+        },
+        {
+          text: 'Clear Everything',
+          style: 'destructive',
+          onPress: async () => {
+            Alert.alert(
+              'Confirm Clear All',
+              'This will permanently delete all stored VTOP data AND your saved credentials. You will need to re-enter your username and password. Are you sure?',
+              [
+                { text: 'Cancel', style: 'cancel' },
+                {
+                  text: 'Clear Everything',
+                  style: 'destructive',
+                  onPress: async () => {
+                    try {
+                      // Clear all data including credentials
+                      await storageManager.clearAllData();
+                      
+                      // Reset component state
+                      setSavedFiles([]);
+                      setStorageStats(null);
+                      setHasCredentials(false);
+                      setCredentials({ username: '', password: '' });
+                      setServerStatus(null);
+                      
+                      Alert.alert(
+                        'Success', 
+                        'All data and credentials cleared successfully. Please enter your credentials again.',
+                        [{ text: 'OK' }]
+                      );
+                    } catch (error) {
+                      Alert.alert('Error', 'Failed to clear data.');
+                    }
+                  }
+                }
+              ]
+            );
           }
         }
       ]
@@ -301,6 +359,13 @@ const SyncButton = () => {
         </View>
       )}
 
+      {/* Credentials Status */}
+      {hasCredentials && (
+        <View style={styles.statusSection}>
+          <Text style={styles.statusText}>✅ Credentials saved for: {credentials.username}</Text>
+        </View>
+      )}
+
       {/* Server Configuration Section */}
       <View style={styles.serverSection}>
         <Text style={styles.sectionTitle}>Server Configuration</Text>
@@ -341,7 +406,7 @@ const SyncButton = () => {
       </TouchableOpacity>
 
       <TouchableOpacity 
-        style={styles.uploadButton} 
+        style={[styles.uploadButton, (!hasCredentials || savedFiles.length === 0) && styles.buttonDisabled]} 
         onPress={uploadToServer}
         disabled={isLoading || savedFiles.length === 0}
       >
@@ -349,7 +414,7 @@ const SyncButton = () => {
       </TouchableOpacity>
 
       <TouchableOpacity 
-        style={styles.syncUploadButton} 
+        style={[styles.syncUploadButton, !hasCredentials && styles.buttonDisabled]} 
         onPress={syncAndUpload}
         disabled={isLoading || !hasCredentials}
       >
@@ -393,7 +458,7 @@ const SyncButton = () => {
         style={styles.clearButton}
         onPress={handleClearData}
       >
-        <Text style={styles.clearButtonText}>Clear All Data</Text>
+        <Text style={styles.clearButtonText}>Clear Data & Credentials</Text>
       </TouchableOpacity>
 
       {/* Instructions */}
@@ -401,11 +466,12 @@ const SyncButton = () => {
         <Text style={styles.sectionTitle}>Instructions</Text>
         <Text style={styles.instructionText}>
           1. Enter your VTOP credentials and save them{'\n'}
-          2. Configure your server URL (laptop IP address){'\n'}
+          2. Configure your server URL (your laptop's IP address){'\n'}
           3. Test server connection before uploading{'\n'}
           4. Use "Sync VTOP Data" to scrape and save locally{'\n'}
           5. Use "Upload Files" to send to your server{'\n'}
-          6. Use "Sync & Upload" for both actions together
+          6. Use "Sync & Upload" for both actions together{'\n'}
+          7. Use "Clear Data & Credentials" for complete reset
         </Text>
       </View>
     </ScrollView>
@@ -435,6 +501,14 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 4,
+  },
+  statusSection: {
+    backgroundColor: '#e8f5e8',
+    padding: 15,
+    borderRadius: 10,
+    marginBottom: 20,
+    borderLeftWidth: 4,
+    borderLeftColor: '#28a745',
   },
   serverSection: {
     backgroundColor: 'white',
@@ -535,6 +609,10 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 16,
     fontWeight: 'bold',
+  },
+  buttonDisabled: {
+    backgroundColor: '#ccc',
+    opacity: 0.6,
   },
   loadingContainer: {
     flexDirection: 'row',

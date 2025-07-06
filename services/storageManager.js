@@ -186,7 +186,7 @@ class StorageManager {
     }
   }
 
-  // Upload all VTOP files sequentially
+  // Upload all VTOP files sequentially with timeout protection
   async uploadAllFilesToServer(serverUrl = 'http://192.168.1.100:3000') {
     const filesToUpload = [
       'vtop_complete_data.json',
@@ -200,7 +200,13 @@ class StorageManager {
     
     for (const filename of filesToUpload) {
       try {
-        const result = await this.uploadFileToServer(filename, serverUrl);
+        // Add timeout protection
+        const uploadPromise = this.uploadFileToServer(filename, serverUrl);
+        const timeoutPromise = new Promise((_, reject) => 
+          setTimeout(() => reject(new Error('Upload timeout after 30 seconds')), 30000)
+        );
+        
+        const result = await Promise.race([uploadPromise, timeoutPromise]);
         results.push({ 
           filename, 
           success: true, 
@@ -225,7 +231,10 @@ class StorageManager {
   // Test server connection
   async testServerConnection(serverUrl = 'http://192.168.1.100:3000') {
     try {
-      const response = await fetch(`${serverUrl}/health`);
+      const response = await fetch(`${serverUrl}/health`, {
+        method: 'GET',
+        timeout: 10000 // 10 second timeout
+      });
       const data = await response.json();
       return { 
         success: true, 
@@ -292,7 +301,7 @@ class StorageManager {
     }
   }
 
-  // Clear all stored data
+  // Clear all stored data INCLUDING CREDENTIALS
   async clearAllData() {
     try {
       // Remove file system data
@@ -301,10 +310,35 @@ class StorageManager {
         await FileSystem.deleteAsync(this.dataDirectory);
       }
       
-      console.log('✅ All data cleared successfully');
+      // Clear stored credentials from SecureStore
+      try {
+        await SecureStore.deleteItemAsync('vtop_username');
+        await SecureStore.deleteItemAsync('vtop_password');
+        console.log('✅ Credentials cleared from SecureStore');
+      } catch (credError) {
+        console.log('ℹ️ No credentials found to clear');
+      }
+      
+      console.log('✅ All data and credentials cleared successfully');
       return { success: true };
     } catch (error) {
       console.error('❌ Error clearing data:', error);
+      throw error;
+    }
+  }
+
+  // Clear only files, keep credentials
+  async clearFilesOnly() {
+    try {
+      const dirInfo = await FileSystem.getInfoAsync(this.dataDirectory);
+      if (dirInfo.exists) {
+        await FileSystem.deleteAsync(this.dataDirectory);
+      }
+      
+      console.log('✅ Files cleared successfully, credentials preserved');
+      return { success: true };
+    } catch (error) {
+      console.error('❌ Error clearing files:', error);
       throw error;
     }
   }
