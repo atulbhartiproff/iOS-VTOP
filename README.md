@@ -1,6 +1,3 @@
-# DISCONTINUED TILL I FIND MY WAY AROUND ALL THE LIMITATION APPLE HAS FOR SOME GOD FORSAKEN REASON OR I FIND SOMEONE WITH APPLE DEVELOPER ACCOUNT
-
-
 # 📱 VTOP Chennai (Unofficial) – React Native + Node.js
 
 > A lightweight React Native app built with Expo that fetches your VTOP data on demand using a refresh button. Powered by a backend scraper using Node.js + cheerio or Jsoup.
