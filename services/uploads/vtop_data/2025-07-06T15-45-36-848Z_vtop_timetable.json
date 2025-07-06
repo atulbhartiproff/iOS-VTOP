@@ -1,0 +1,28 @@
+[
+  {
+    "id": "tt_001",
+    "day": "Monday",
+    "timeSlot": "09:00-09:50",
+    "subject": {
+      "code": "CSE3001",
+      "name": "Data Structures and Algorithms",
+      "type": "Theory"
+    },
+    "venue": "SJT-101",
+    "faculty": "Dr. John Smith",
+    "semester": 7
+  },
+  {
+    "id": "tt_002",
+    "day": "Monday",
+    "timeSlot": "10:00-10:50",
+    "subject": {
+      "code": "CSE3002",
+      "name": "Database Management Systems",
+      "type": "Theory"
+    },
+    "venue": "SJT-102",
+    "faculty": "Dr. Jane Wilson",
+    "semester": 7
+  }
+]
