@@ -2,51 +2,171 @@
   {
     "code": "BCSE202L",
     "name": "Data Structures and Algorithms",
-    "attendance": 35
+    "attendance": 35,
+    "details": [
+      {"date": "2025-05-11", "status": "Present"},
+      {"date": "2025-05-15", "status": "Present"},
+      {"date": "2025-05-23", "status": "Present"},
+      {"date": "2025-05-30", "status": "Absent"},
+      {"date": "2025-06-05", "status": "Present"},
+      {"date": "2025-06-09", "status": "Present"},
+      {"date": "2025-06-17", "status": "Present"},
+      {"date": "2025-06-22", "status": "Present"},
+      {"date": "2025-07-06", "status": "Present"},
+      {"date": "2025-07-07", "status": "Absent"}
+    ]
   },
   {
     "code": "BCSE202P",
     "name": "Data Structures and Algorithms Lab",
-    "attendance": 75
+    "attendance": 75,
+    "details": [
+      {"date": "2025-05-21", "status": "Present"},
+      {"date": "2025-05-24", "status": "Present"},
+      {"date": "2025-05-29", "status": "Absent"},
+      {"date": "2025-05-29", "status": "Absent"},
+      {"date": "2025-06-02", "status": "Present"},
+      {"date": "2025-06-03", "status": "Present"},
+      {"date": "2025-06-14", "status": "Present"},
+      {"date": "2025-06-19", "status": "Absent"},
+      {"date": "2025-07-05", "status": "Absent"},
+      {"date": "2025-07-05", "status": "Present"}
+    ]
   },
   {
     "code": "BCSE203E",
     "name": "Web Programming",
-    "attendance": 92
+    "attendance": 92,
+    "details": [
+      {"date": "2025-05-09", "status": "Absent"},
+      {"date": "2025-05-11", "status": "Present"},
+      {"date": "2025-05-20", "status": "Present"},
+      {"date": "2025-06-02", "status": "Present"},
+      {"date": "2025-06-05", "status": "Present"},
+      {"date": "2025-06-22", "status": "Present"},
+      {"date": "2025-06-26", "status": "Absent"},
+      {"date": "2025-06-28", "status": "Present"},
+      {"date": "2025-07-04", "status": "Absent"},
+      {"date": "2025-07-06", "status": "Present"}
+    ]
   },
   {
     "code": "BCSE204L",
     "name": "Design and Analysis of Algorithms",
-    "attendance": 80
+    "attendance": 80,
+    "details": [
+      {"date": "2025-05-09", "status": "Absent"},
+      {"date": "2025-05-14", "status": "Present"},
+      {"date": "2025-05-25", "status": "Absent"},
+      {"date": "2025-05-28", "status": "Present"},
+      {"date": "2025-06-02", "status": "Absent"},
+      {"date": "2025-06-05", "status": "Present"},
+      {"date": "2025-06-09", "status": "Present"},
+      {"date": "2025-06-26", "status": "Present"},
+      {"date": "2025-06-30", "status": "Absent"},
+      {"date": "2025-07-02", "status": "Absent"}
+    ]
   },
   {
     "code": "BCSE204P",
     "name": "Design and Analysis of Algorithms Lab",
-    "attendance": 88
+    "attendance": 88,
+    "details": [
+      {"date": "2025-05-09", "status": "Absent"},
+      {"date": "2025-05-16", "status": "Present"},
+      {"date": "2025-05-17", "status": "Absent"},
+      {"date": "2025-05-28", "status": "Present"},
+      {"date": "2025-06-04", "status": "Present"},
+      {"date": "2025-06-15", "status": "Absent"},
+      {"date": "2025-06-23", "status": "Absent"},
+      {"date": "2025-06-29", "status": "Absent"},
+      {"date": "2025-07-04", "status": "Absent"},
+      {"date": "2025-07-07", "status": "Absent"}
+    ]
   },
   {
     "code": "BCSE205L",
     "name": "Computer Architecture and Organization",
-    "attendance": 77
+    "attendance": 77,
+    "details": [
+      {"date": "2025-05-12", "status": "Absent"},
+      {"date": "2025-05-17", "status": "Absent"},
+      {"date": "2025-05-17", "status": "Absent"},
+      {"date": "2025-05-18", "status": "Present"},
+      {"date": "2025-05-23", "status": "Present"},
+      {"date": "2025-05-25", "status": "Absent"},
+      {"date": "2025-06-10", "status": "Absent"},
+      {"date": "2025-06-17", "status": "Absent"},
+      {"date": "2025-06-25", "status": "Absent"},
+      {"date": "2025-07-04", "status": "Present"}
+    ]
   },
   {
     "code": "BCSE301L",
     "name": "Software Engineering",
-    "attendance": 90
+    "attendance": 90,
+    "details": [
+      {"date": "2025-05-13", "status": "Present"},
+      {"date": "2025-05-17", "status": "Present"},
+      {"date": "2025-05-25", "status": "Absent"},
+      {"date": "2025-05-31", "status": "Absent"},
+      {"date": "2025-06-02", "status": "Absent"},
+      {"date": "2025-06-20", "status": "Absent"},
+      {"date": "2025-06-20", "status": "Absent"},
+      {"date": "2025-06-25", "status": "Present"},
+      {"date": "2025-06-28", "status": "Present"},
+      {"date": "2025-06-30", "status": "Present"}
+    ]
   },
   {
     "code": "BCSE301P",
     "name": "Software Engineering Lab",
-    "attendance": 84
+    "attendance": 84,
+    "details": [
+      {"date": "2025-05-10", "status": "Absent"},
+      {"date": "2025-05-13", "status": "Present"},
+      {"date": "2025-05-14", "status": "Present"},
+      {"date": "2025-05-17", "status": "Absent"},
+      {"date": "2025-05-19", "status": "Present"},
+      {"date": "2025-05-26", "status": "Present"},
+      {"date": "2025-05-27", "status": "Present"},
+      {"date": "2025-06-03", "status": "Absent"},
+      {"date": "2025-06-15", "status": "Present"},
+      {"date": "2025-06-28", "status": "Present"}
+    ]
   },
   {
     "code": "BCSE302L",
     "name": "Database Systems",
-    "attendance": 70
+    "attendance": 70,
+    "details": [
+      {"date": "2025-05-20", "status": "Absent"},
+      {"date": "2025-06-02", "status": "Present"},
+      {"date": "2025-06-05", "status": "Absent"},
+      {"date": "2025-06-14", "status": "Absent"},
+      {"date": "2025-06-21", "status": "Present"},
+      {"date": "2025-06-27", "status": "Present"},
+      {"date": "2025-06-30", "status": "Present"},
+      {"date": "2025-07-02", "status": "Absent"},
+      {"date": "2025-07-05", "status": "Absent"},
+      {"date": "2025-07-06", "status": "Present"}
+    ]
   },
   {
     "code": "BCSE302P",
     "name": "Database Systems Lab",
-    "attendance": 78
+    "attendance": 78,
+    "details": [
+      {"date": "2025-05-31", "status": "Absent"},
+      {"date": "2025-05-31", "status": "Absent"},
+      {"date": "2025-06-02", "status": "Present"},
+      {"date": "2025-06-03", "status": "Absent"},
+      {"date": "2025-06-07", "status": "Present"},
+      {"date": "2025-06-08", "status": "Absent"},
+      {"date": "2025-06-08", "status": "Present"},
+      {"date": "2025-06-26", "status": "Absent"},
+      {"date": "2025-06-28", "status": "Absent"},
+      {"date": "2025-07-03", "status": "Present"}
+    ]
   }
 ]

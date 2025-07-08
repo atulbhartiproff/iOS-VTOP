@@ -1,33 +1,32 @@
-import React, { useEffect, useRef, useState } from "react";
+import { Router } from 'expo-router';
+import React, { useEffect, useRef, useState } from 'react';
 import {
-    Animated,
-    Dimensions,
-    SafeAreaView,
-    ScrollView,
-    StyleSheet,
-    Text,
-    View,
-} from "react-native";
-import { Circle } from "react-native-progress";
-import attendanceData from "../data/attendance.json";
+  Animated,
+  Dimensions,
+  SafeAreaView,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
+import { Circle } from 'react-native-progress';
+import attendanceData from '../data/attendance.json';
 
-const { width } = Dimensions.get("window");
+const { width } = Dimensions.get('window');
 const BASE_CIRCLE_SIZE = width * 0.8;
 
 const colors = [
-  "#70C1B3",
-  "#F25F5C",
-  "#FFE066",
-  "#247BA0",
-  "#50514F",
-  "#9BC53D",
-  "#C3423F",
-  "#E55934",
-  "#6A0572",
-  "#3F88C5",
+  '#70C1B3', '#F25F5C', '#FFE066', '#247BA0',
+  '#50514F', '#9BC53D', '#C3423F', '#E55934',
+  '#6A0572', '#3F88C5'
 ];
 
-const AttendanceScreen = () => {
+type AttendanceScreenProps = {
+  router: Router;
+};
+
+const AttendanceScreen = ({ router }: AttendanceScreenProps) => {
   const animatedValues = useRef(
     attendanceData.map(() => new Animated.Value(0))
   ).current;
@@ -39,7 +38,7 @@ const AttendanceScreen = () => {
   useEffect(() => {
     animatedValues.forEach((anim, index) => {
       anim.addListener(({ value }) => {
-        setProgressValues((prev) => {
+        setProgressValues(prev => {
           const updated = [...prev];
           updated[index] = value;
           return updated;
@@ -54,7 +53,7 @@ const AttendanceScreen = () => {
     });
 
     return () => {
-      animatedValues.forEach((anim) => anim.removeAllListeners());
+      animatedValues.forEach(anim => anim.removeAllListeners());
     };
   }, []);
 
@@ -63,23 +62,15 @@ const AttendanceScreen = () => {
       <ScrollView style={styles.container}>
         <Text style={styles.heading}>Attendance Info</Text>
 
-        {/* Main ring container */}
         <View style={styles.ringContainer}>
-          {/* Animated Subject Rings */}
           {progressValues.map((val, index) => (
-            <View
-              key={index}
-              style={[
-                styles.circleWrap,
-                { zIndex: attendanceData.length - index },
-              ]}
-            >
+            <View key={index} style={[styles.circleWrap, { zIndex: attendanceData.length - index }]}>
               <Circle
                 size={BASE_CIRCLE_SIZE - index * 12}
                 progress={val}
                 thickness={6}
                 color={colors[index % colors.length]}
-                unfilledColor="rgba(255, 255, 255, 0.05)"
+                unfilledColor="rgba(255,255,255,0.05)"
                 borderWidth={0}
                 showsText={false}
               />
@@ -87,27 +78,26 @@ const AttendanceScreen = () => {
           ))}
         </View>
 
-        {/* Legend */}
         <View style={styles.legend}>
           <Text style={styles.legendText}>
             {attendanceData.map((subject, index) => (
-              <Text
-                key={subject.code}
-                style={{ color: colors[index % colors.length] }}
-              >
-                • {subject.code}{" "}
+              <Text key={subject.code} style={{ color: colors[index % colors.length] }}>
+                • {subject.code}{' '}
               </Text>
             ))}
           </Text>
         </View>
 
-        {/* Cards */}
         {attendanceData.map((subject, index) => (
-          <View key={subject.code} style={styles.card}>
+          <TouchableOpacity
+            key={subject.code}
+            style={styles.card}
+            onPress={() => router.push({ pathname: `/subject/${subject.code}`, params: { subject: JSON.stringify(subject) } })}
+          >
             <Text style={styles.subjectName}>{subject.name}</Text>
             <Text style={styles.subjectCode}>{subject.code}</Text>
             <Text style={styles.attendance}>{subject.attendance}%</Text>
-          </View>
+          </TouchableOpacity>
         ))}
       </ScrollView>
     </SafeAreaView>
@@ -117,7 +107,7 @@ const AttendanceScreen = () => {
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
-    backgroundColor: "#0E0E10",
+    backgroundColor: '#0E0E10',
   },
   container: {
     padding: 16,
@@ -125,53 +115,53 @@ const styles = StyleSheet.create({
   },
   heading: {
     fontSize: 24,
-    color: "#fff",
-    fontWeight: "bold",
+    color: '#fff',
+    fontWeight: 'bold',
     marginBottom: 20,
-    alignSelf: "center",
+    alignSelf: 'center',
   },
   ringContainer: {
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: 'center',
+    justifyContent: 'center',
     height: BASE_CIRCLE_SIZE + 40,
     marginBottom: 20,
   },
   circleWrap: {
-    position: "absolute",
+    position: 'absolute',
   },
   legend: {
     marginVertical: 16,
     paddingHorizontal: 12,
-    flexWrap: "wrap",
-    flexDirection: "row",
+    flexWrap: 'wrap',
+    flexDirection: 'row',
   },
   legendText: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-    color: "#fff",
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    color: '#fff',
     fontSize: 14,
     lineHeight: 20,
   },
   card: {
-    backgroundColor: "#1E1E1E",
+    backgroundColor: '#1E1E1E',
     padding: 16,
     borderRadius: 12,
     marginBottom: 12,
   },
   subjectName: {
-    color: "#fff",
+    color: '#fff',
     fontSize: 16,
-    fontWeight: "600",
+    fontWeight: '600',
   },
   subjectCode: {
-    color: "#ccc",
+    color: '#ccc',
     fontSize: 14,
     marginVertical: 4,
   },
   attendance: {
-    color: "#FFD700",
+    color: '#FFD700',
     fontSize: 18,
-    fontWeight: "700",
+    fontWeight: '700',
   },
 });
 
