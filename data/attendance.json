@@ -5,16 +5,16 @@
     "classesHeld": 10,
     "classesAttended": 8,
     "details": [
-      { "date": "2025-05-11", "status": "Present" },
-      { "date": "2025-05-15", "status": "Present" },
-      { "date": "2025-05-23", "status": "Present" },
-      { "date": "2025-05-30", "status": "Absent" },
-      { "date": "2025-06-05", "status": "Present" },
-      { "date": "2025-06-09", "status": "Present" },
-      { "date": "2025-06-17", "status": "Present" },
-      { "date": "2025-06-22", "status": "Present" },
-      { "date": "2025-07-06", "status": "Present" },
-      { "date": "2025-07-07", "status": "Absent" }
+      { "date": "11/05/2025", "status": "Present" },
+      { "date": "15/05/2025", "status": "Present" },
+      { "date": "23/05/2025", "status": "Present" },
+      { "date": "30/05/2025", "status": "Absent" },
+      { "date": "05/06/2025", "status": "Present" },
+      { "date": "09/06/2025", "status": "Present" },
+      { "date": "17/06/2025", "status": "Present" },
+      { "date": "22/06/2025", "status": "Present" },
+      { "date": "06/07/2025", "status": "Present" },
+      { "date": "07/07/2025", "status": "Absent" }
     ]
   },
   {
@@ -23,16 +23,16 @@
     "classesHeld": 10,
     "classesAttended": 6,
     "details": [
-      { "date": "2025-05-21", "status": "Present" },
-      { "date": "2025-05-24", "status": "Present" },
-      { "date": "2025-05-29", "status": "Absent" },
-      { "date": "2025-05-29", "status": "Absent" },
-      { "date": "2025-06-02", "status": "Present" },
-      { "date": "2025-06-03", "status": "Present" },
-      { "date": "2025-06-14", "status": "Present" },
-      { "date": "2025-06-19", "status": "Absent" },
-      { "date": "2025-07-05", "status": "Absent" },
-      { "date": "2025-07-05", "status": "Present" }
+      { "date": "21/05/2025", "status": "Present" },
+      { "date": "24/05/2025", "status": "Present" },
+      { "date": "29/05/2025", "status": "Absent" },
+      { "date": "29/05/2025", "status": "Absent" },
+      { "date": "02/06/2025", "status": "Present" },
+      { "date": "03/06/2025", "status": "Present" },
+      { "date": "14/06/2025", "status": "Present" },
+      { "date": "19/06/2025", "status": "Absent" },
+      { "date": "05/07/2025", "status": "Absent" },
+      { "date": "05/07/2025", "status": "Present" }
     ]
   },
   {
@@ -41,16 +41,16 @@
     "classesHeld": 10,
     "classesAttended": 7,
     "details": [
-      { "date": "2025-05-09", "status": "Absent" },
-      { "date": "2025-05-11", "status": "Present" },
-      { "date": "2025-05-20", "status": "Present" },
-      { "date": "2025-06-02", "status": "Present" },
-      { "date": "2025-06-05", "status": "Present" },
-      { "date": "2025-06-22", "status": "Present" },
-      { "date": "2025-06-26", "status": "Absent" },
-      { "date": "2025-06-28", "status": "Present" },
-      { "date": "2025-07-04", "status": "Absent" },
-      { "date": "2025-07-06", "status": "Present" }
+      { "date": "09/05/2025", "status": "Absent" },
+      { "date": "11/05/2025", "status": "Present" },
+      { "date": "20/05/2025", "status": "Present" },
+      { "date": "02/06/2025", "status": "Present" },
+      { "date": "05/06/2025", "status": "Present" },
+      { "date": "22/06/2025", "status": "Present" },
+      { "date": "26/06/2025", "status": "Absent" },
+      { "date": "28/06/2025", "status": "Present" },
+      { "date": "04/07/2025", "status": "Absent" },
+      { "date": "06/07/2025", "status": "Present" }
     ]
   },
   {
@@ -59,16 +59,16 @@
     "classesHeld": 10,
     "classesAttended": 5,
     "details": [
-      { "date": "2025-05-09", "status": "Absent" },
-      { "date": "2025-05-14", "status": "Present" },
-      { "date": "2025-05-25", "status": "Absent" },
-      { "date": "2025-05-28", "status": "Present" },
-      { "date": "2025-06-02", "status": "Absent" },
-      { "date": "2025-06-05", "status": "Present" },
-      { "date": "2025-06-09", "status": "Present" },
-      { "date": "2025-06-26", "status": "Present" },
-      { "date": "2025-06-30", "status": "Absent" },
-      { "date": "2025-07-02", "status": "Absent" }
+      { "date": "09/05/2025", "status": "Absent" },
+      { "date": "14/05/2025", "status": "Present" },
+      { "date": "25/05/2025", "status": "Absent" },
+      { "date": "28/05/2025", "status": "Present" },
+      { "date": "02/06/2025", "status": "Absent" },
+      { "date": "05/06/2025", "status": "Present" },
+      { "date": "09/06/2025", "status": "Present" },
+      { "date": "26/06/2025", "status": "Present" },
+      { "date": "30/06/2025", "status": "Absent" },
+      { "date": "02/07/2025", "status": "Absent" }
     ]
   },
   {
@@ -77,16 +77,16 @@
     "classesHeld": 10,
     "classesAttended": 3,
     "details": [
-      { "date": "2025-05-09", "status": "Absent" },
-      { "date": "2025-05-16", "status": "Present" },
-      { "date": "2025-05-17", "status": "Absent" },
-      { "date": "2025-05-28", "status": "Present" },
-      { "date": "2025-06-04", "status": "Present" },
-      { "date": "2025-06-15", "status": "Absent" },
-      { "date": "2025-06-23", "status": "Absent" },
-      { "date": "2025-06-29", "status": "Absent" },
-      { "date": "2025-07-04", "status": "Absent" },
-      { "date": "2025-07-07", "status": "Absent" }
+      { "date": "09/05/2025", "status": "Absent" },
+      { "date": "16/05/2025", "status": "Present" },
+      { "date": "17/05/2025", "status": "Absent" },
+      { "date": "28/05/2025", "status": "Present" },
+      { "date": "04/06/2025", "status": "Present" },
+      { "date": "15/06/2025", "status": "Absent" },
+      { "date": "23/06/2025", "status": "Absent" },
+      { "date": "29/06/2025", "status": "Absent" },
+      { "date": "04/07/2025", "status": "Absent" },
+      { "date": "07/07/2025", "status": "Absent" }
     ]
   },
   {
@@ -95,16 +95,16 @@
     "classesHeld": 10,
     "classesAttended": 3,
     "details": [
-      { "date": "2025-05-12", "status": "Absent" },
-      { "date": "2025-05-17", "status": "Absent" },
-      { "date": "2025-05-17", "status": "Absent" },
-      { "date": "2025-05-18", "status": "Present" },
-      { "date": "2025-05-23", "status": "Present" },
-      { "date": "2025-05-25", "status": "Absent" },
-      { "date": "2025-06-10", "status": "Absent" },
-      { "date": "2025-06-17", "status": "Absent" },
-      { "date": "2025-06-25", "status": "Absent" },
-      { "date": "2025-07-04", "status": "Present" }
+      { "date": "12/05/2025", "status": "Absent" },
+      { "date": "17/05/2025", "status": "Absent" },
+      { "date": "17/05/2025", "status": "Absent" },
+      { "date": "18/05/2025", "status": "Present" },
+      { "date": "23/05/2025", "status": "Present" },
+      { "date": "25/05/2025", "status": "Absent" },
+      { "date": "10/06/2025", "status": "Absent" },
+      { "date": "17/06/2025", "status": "Absent" },
+      { "date": "25/06/2025", "status": "Absent" },
+      { "date": "04/07/2025", "status": "Present" }
     ]
   },
   {
@@ -113,16 +113,16 @@
     "classesHeld": 10,
     "classesAttended": 5,
     "details": [
-      { "date": "2025-05-13", "status": "Present" },
-      { "date": "2025-05-17", "status": "Present" },
-      { "date": "2025-05-25", "status": "Absent" },
-      { "date": "2025-05-31", "status": "Absent" },
-      { "date": "2025-06-02", "status": "Absent" },
-      { "date": "2025-06-20", "status": "Absent" },
-      { "date": "2025-06-20", "status": "Absent" },
-      { "date": "2025-06-25", "status": "Present" },
-      { "date": "2025-06-28", "status": "Present" },
-      { "date": "2025-06-30", "status": "Present" }
+      { "date": "13/05/2025", "status": "Present" },
+      { "date": "17/05/2025", "status": "Present" },
+      { "date": "25/05/2025", "status": "Absent" },
+      { "date": "31/05/2025", "status": "Absent" },
+      { "date": "02/06/2025", "status": "Absent" },
+      { "date": "20/06/2025", "status": "Absent" },
+      { "date": "20/06/2025", "status": "Absent" },
+      { "date": "25/06/2025", "status": "Present" },
+      { "date": "28/06/2025", "status": "Present" },
+      { "date": "30/06/2025", "status": "Present" }
     ]
   },
   {
@@ -131,16 +131,16 @@
     "classesHeld": 10,
     "classesAttended": 7,
     "details": [
-      { "date": "2025-05-10", "status": "Absent" },
-      { "date": "2025-05-13", "status": "Present" },
-      { "date": "2025-05-14", "status": "Present" },
-      { "date": "2025-05-17", "status": "Absent" },
-      { "date": "2025-05-19", "status": "Present" },
-      { "date": "2025-05-26", "status": "Present" },
-      { "date": "2025-05-27", "status": "Present" },
-      { "date": "2025-06-03", "status": "Absent" },
-      { "date": "2025-06-15", "status": "Present" },
-      { "date": "2025-06-28", "status": "Present" }
+      { "date": "10/05/2025", "status": "Absent" },
+      { "date": "13/05/2025", "status": "Present" },
+      { "date": "14/05/2025", "status": "Present" },
+      { "date": "17/05/2025", "status": "Absent" },
+      { "date": "19/05/2025", "status": "Present" },
+      { "date": "26/05/2025", "status": "Present" },
+      { "date": "27/05/2025", "status": "Present" },
+      { "date": "03/06/2025", "status": "Absent" },
+      { "date": "15/06/2025", "status": "Present" },
+      { "date": "28/06/2025", "status": "Present" }
     ]
   },
   {
@@ -149,16 +149,16 @@
     "classesHeld": 10,
     "classesAttended": 5,
     "details": [
-      { "date": "2025-05-20", "status": "Absent" },
-      { "date": "2025-06-02", "status": "Present" },
-      { "date": "2025-06-05", "status": "Absent" },
-      { "date": "2025-06-14", "status": "Absent" },
-      { "date": "2025-06-21", "status": "Present" },
-      { "date": "2025-06-27", "status": "Present" },
-      { "date": "2025-06-30", "status": "Present" },
-      { "date": "2025-07-02", "status": "Absent" },
-      { "date": "2025-07-05", "status": "Absent" },
-      { "date": "2025-07-06", "status": "Present" }
+      { "date": "20/05/2025", "status": "Absent" },
+      { "date": "02/06/2025", "status": "Present" },
+      { "date": "05/06/2025", "status": "Absent" },
+      { "date": "14/06/2025", "status": "Absent" },
+      { "date": "21/06/2025", "status": "Present" },
+      { "date": "27/06/2025", "status": "Present" },
+      { "date": "30/06/2025", "status": "Present" },
+      { "date": "02/07/2025", "status": "Absent" },
+      { "date": "05/07/2025", "status": "Absent" },
+      { "date": "06/07/2025", "status": "Present" }
     ]
   },
   {
@@ -167,16 +167,16 @@
     "classesHeld": 10,
     "classesAttended": 4,
     "details": [
-      { "date": "2025-05-31", "status": "Absent" },
-      { "date": "2025-05-31", "status": "Absent" },
-      { "date": "2025-06-02", "status": "Present" },
-      { "date": "2025-06-03", "status": "Absent" },
-      { "date": "2025-06-07", "status": "Present" },
-      { "date": "2025-06-08", "status": "Absent" },
-      { "date": "2025-06-08", "status": "Present" },
-      { "date": "2025-06-26", "status": "Absent" },
-      { "date": "2025-06-28", "status": "Absent" },
-      { "date": "2025-07-03", "status": "Present" }
+      { "date": "31/05/2025", "status": "Absent" },
+      { "date": "31/05/2025", "status": "Absent" },
+      { "date": "02/06/2025", "status": "Present" },
+      { "date": "03/06/2025", "status": "Absent" },
+      { "date": "07/06/2025", "status": "Present" },
+      { "date": "08/06/2025", "status": "Absent" },
+      { "date": "08/06/2025", "status": "Present" },
+      { "date": "26/06/2025", "status": "Absent" },
+      { "date": "28/06/2025", "status": "Absent" },
+      { "date": "03/07/2025", "status": "Present" }
     ]
   }
 ]
