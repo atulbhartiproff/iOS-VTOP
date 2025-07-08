@@ -3,12 +3,11 @@ import React, { useEffect, useRef, useState } from 'react';
 import {
   Animated,
   Dimensions,
-  SafeAreaView,
   ScrollView,
   StyleSheet,
   Text,
   TouchableOpacity,
-  View,
+  View
 } from 'react-native';
 import { Circle } from 'react-native-progress';
 import attendanceData from '../data/attendance.json';
@@ -80,7 +79,7 @@ const AttendanceScreen = ({ router }: AttendanceScreenProps) => {
   };
 
   return (
-    <SafeAreaView style={styles.safeArea}>
+    <View style={styles.safeArea}>
       <ScrollView style={styles.container}>
         <Text style={styles.heading}>Attendance Info</Text>
 
@@ -137,13 +136,14 @@ const AttendanceScreen = ({ router }: AttendanceScreenProps) => {
           );
         })}
       </ScrollView>
-    </SafeAreaView>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
+    paddingTop: 37,
     backgroundColor: '#0E0E10',
   },
   container: {
