@@ -1,6 +1,7 @@
 // import App from "./(tabs)/home";
-import App from "./(tabs)/scrapetest";
+import AttendanceScreen from "../components/attendanceScreen";
 
 export default function Index() {
-  return <App />;
+  // return <App />;
+  return <AttendanceScreen />;
 }

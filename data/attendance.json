@@ -1,0 +1,52 @@
+[
+  {
+    "code": "BCSE202L",
+    "name": "Data Structures and Algorithms",
+    "attendance": 35
+  },
+  {
+    "code": "BCSE202P",
+    "name": "Data Structures and Algorithms Lab",
+    "attendance": 75
+  },
+  {
+    "code": "BCSE203E",
+    "name": "Web Programming",
+    "attendance": 92
+  },
+  {
+    "code": "BCSE204L",
+    "name": "Design and Analysis of Algorithms",
+    "attendance": 80
+  },
+  {
+    "code": "BCSE204P",
+    "name": "Design and Analysis of Algorithms Lab",
+    "attendance": 88
+  },
+  {
+    "code": "BCSE205L",
+    "name": "Computer Architecture and Organization",
+    "attendance": 77
+  },
+  {
+    "code": "BCSE301L",
+    "name": "Software Engineering",
+    "attendance": 90
+  },
+  {
+    "code": "BCSE301P",
+    "name": "Software Engineering Lab",
+    "attendance": 84
+  },
+  {
+    "code": "BCSE302L",
+    "name": "Database Systems",
+    "attendance": 70
+  },
+  {
+    "code": "BCSE302P",
+    "name": "Database Systems Lab",
+    "attendance": 78
+  }
+]
