@@ -1,6 +1,5 @@
 import { useLocalSearchParams } from 'expo-router';
 import { FlatList, StyleSheet, Text, View } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function SubjectDetailScreen() {
   const { subject } = useLocalSearchParams();
@@ -17,10 +16,10 @@ export default function SubjectDetailScreen() {
   const details = data.details || [];
 
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       <Text style={styles.title}>{data.name}</Text>
       <Text style={styles.code}>{data.code}</Text>
-      <Text style={styles.attendance}>{data.attendance}% Attendance</Text>
+      <Text style={styles.attendance}>{(data.classesAttended/data.classesHeld)*100}% Attendance</Text>
 
       {data.totalClasses && (
         <>
@@ -62,7 +61,7 @@ export default function SubjectDetailScreen() {
         style={{ marginTop: 16 }}
         showsVerticalScrollIndicator={false}
       />
-    </SafeAreaView>
+    </View>
   );
 }
 
@@ -71,6 +70,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#0E0E10',
     padding: 24,
+    paddingTop: 80,
   },
   title: {
     fontSize: 28,

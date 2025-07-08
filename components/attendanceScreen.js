@@ -27,12 +27,16 @@ type AttendanceScreenProps = {
 };
 
 const AttendanceScreen = ({ router }: AttendanceScreenProps) => {
+  const computedAttendance = attendanceData.map(subj =>
+    subj.classesHeld > 0 ? (subj.classesAttended / subj.classesHeld) * 100 : 0
+  );
+
   const animatedValues = useRef(
-    attendanceData.map(() => new Animated.Value(0))
+    computedAttendance.map(() => new Animated.Value(0))
   ).current;
 
   const [progressValues, setProgressValues] = useState(
-    attendanceData.map(() => 0)
+    computedAttendance.map(() => 0)
   );
 
   useEffect(() => {
@@ -46,7 +50,7 @@ const AttendanceScreen = ({ router }: AttendanceScreenProps) => {
       });
 
       Animated.timing(anim, {
-        toValue: attendanceData[index].attendance / 100,
+        toValue: computedAttendance[index] / 100,
         duration: 1000,
         useNativeDriver: false,
       }).start();
@@ -56,6 +60,24 @@ const AttendanceScreen = ({ router }: AttendanceScreenProps) => {
       animatedValues.forEach(anim => anim.removeAllListeners());
     };
   }, []);
+
+  const getSkipOrAttend = (held: number, attended: number): number => {
+    if (held === 0) return 0;
+    const currentPercentage = attended / held;
+    if (currentPercentage >= 0.75) {
+      let bunkable = 0;
+      while ((attended / (held + bunkable)) >= 0.75) {
+        bunkable++;
+      }
+      return bunkable - 1;
+    } else {
+      let needed = 0;
+      while (((attended + needed) / (held + needed)) < 0.75) {
+        needed++;
+      }
+      return -needed;
+    }
+  };
 
   return (
     <SafeAreaView style={styles.safeArea}>
@@ -88,17 +110,32 @@ const AttendanceScreen = ({ router }: AttendanceScreenProps) => {
           </Text>
         </View>
 
-        {attendanceData.map((subject, index) => (
-          <TouchableOpacity
-            key={subject.code}
-            style={styles.card}
-            onPress={() => router.push({ pathname: `/subject/${subject.code}`, params: { subject: JSON.stringify(subject) } })}
-          >
-            <Text style={styles.subjectName}>{subject.name}</Text>
-            <Text style={styles.subjectCode}>{subject.code}</Text>
-            <Text style={styles.attendance}>{subject.attendance}%</Text>
-          </TouchableOpacity>
-        ))}
+        {attendanceData.map((subject, index) => {
+          const attendance = computedAttendance[index].toFixed(1);
+          const diff = getSkipOrAttend(subject.classesHeld, subject.classesAttended);
+          const diffColor = diff > 0 ? '#00FF88' : diff < 0 ? '#FF4D4D' : '#FFFFFF';
+
+          return (
+            <TouchableOpacity
+              key={subject.code}
+              style={styles.card}
+              onPress={() => router.push({ pathname: `/subject/${subject.code}`, params: { subject: JSON.stringify(subject) } })}
+            >
+              <View style={styles.cardRow}>
+                <View>
+                  <Text style={styles.subjectName}>{subject.name}</Text>
+                  <Text style={styles.subjectCode}>{subject.code}</Text>
+                  <Text style={styles.attendance}>{attendance}%</Text>
+                </View>
+                <View style={[styles.diffCircle, { borderColor: diffColor }]}> 
+                  <Text style={{ color: diffColor, fontWeight: 'bold' }}>
+                    {diff > 0 ? `+${diff}` : diff}
+                  </Text>
+                </View>
+              </View>
+            </TouchableOpacity>
+          );
+        })}
       </ScrollView>
     </SafeAreaView>
   );
@@ -148,6 +185,11 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     marginBottom: 12,
   },
+  cardRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
   subjectName: {
     color: '#fff',
     fontSize: 16,
@@ -162,6 +204,14 @@ const styles = StyleSheet.create({
     color: '#FFD700',
     fontSize: 18,
     fontWeight: '700',
+  },
+  diffCircle: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    borderWidth: 2,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
 
