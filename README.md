@@ -27,9 +27,9 @@ Built with **React Native**, **Expo Router**, and data-driven UI from local JSON
 
 ## 📷 Screenshots
 
-| Main Attendance Ring | Subject Detail View |
+| Main Attendance  | Time Table View |
 |----------------------|---------------------|
-| ![Ring](./public/mainAttendance.jpeg)| ![Detail](./public/subjectAttendance.jpeg) |
+| ![Ring](./public/new-attendance.png)| ![Detail](./public/home_screen.png) |
 
 ## 🛠️ Getting Started
 
