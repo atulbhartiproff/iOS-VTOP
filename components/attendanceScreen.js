@@ -1,7 +1,6 @@
-import { Router } from 'expo-router';
-import React, { useEffect, useRef, useState } from 'react';
+import { useRouter } from 'expo-router';
+import React from 'react';
 import {
-  Animated,
   Dimensions,
   ScrollView,
   StyleSheet,
@@ -9,7 +8,6 @@ import {
   TouchableOpacity,
   View
 } from 'react-native';
-import { Circle } from 'react-native-progress';
 import attendanceData from '../data/attendance.json';
 
 const { width } = Dimensions.get('window');
@@ -21,46 +19,14 @@ const colors = [
   '#6A0572', '#3F88C5'
 ];
 
-type AttendanceScreenProps = {
-  router: Router;
-};
+const AttendanceScreen = () => {
+  const router = useRouter();
 
-const AttendanceScreen = ({ router }: AttendanceScreenProps) => {
   const computedAttendance = attendanceData.map(subj =>
     subj.classesHeld > 0 ? (subj.classesAttended / subj.classesHeld) * 100 : 0
   );
 
-  const animatedValues = useRef(
-    computedAttendance.map(() => new Animated.Value(0))
-  ).current;
-
-  const [progressValues, setProgressValues] = useState(
-    computedAttendance.map(() => 0)
-  );
-
-  useEffect(() => {
-    animatedValues.forEach((anim, index) => {
-      anim.addListener(({ value }) => {
-        setProgressValues(prev => {
-          const updated = [...prev];
-          updated[index] = value;
-          return updated;
-        });
-      });
-
-      Animated.timing(anim, {
-        toValue: computedAttendance[index] / 100,
-        duration: 1000,
-        useNativeDriver: false,
-      }).start();
-    });
-
-    return () => {
-      animatedValues.forEach(anim => anim.removeAllListeners());
-    };
-  }, []);
-
-  const getSkipOrAttend = (held: number, attended: number): number => {
+  const getSkipOrAttend = (held, attended) => {
     if (held === 0) return 0;
     const currentPercentage = attended / held;
     if (currentPercentage >= 0.75) {
@@ -82,32 +48,6 @@ const AttendanceScreen = ({ router }: AttendanceScreenProps) => {
     <View style={styles.safeArea}>
       <ScrollView style={styles.container}>
         <Text style={styles.heading}>Attendance Info</Text>
-
-        <View style={styles.ringContainer}>
-          {progressValues.map((val, index) => (
-            <View key={index} style={[styles.circleWrap, { zIndex: attendanceData.length - index }]}>
-              <Circle
-                size={BASE_CIRCLE_SIZE - index * 12}
-                progress={val}
-                thickness={6}
-                color={colors[index % colors.length]}
-                unfilledColor="rgba(255,255,255,0.05)"
-                borderWidth={0}
-                showsText={false}
-              />
-            </View>
-          ))}
-        </View>
-
-        <View style={styles.legend}>
-          <Text style={styles.legendText}>
-            {attendanceData.map((subject, index) => (
-              <Text key={subject.code} style={{ color: colors[index % colors.length] }}>
-                • {subject.code}{' '}
-              </Text>
-            ))}
-          </Text>
-        </View>
 
         {attendanceData.map((subject, index) => {
           const attendance = computedAttendance[index].toFixed(1);

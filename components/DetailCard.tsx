@@ -62,6 +62,9 @@ const BottomCard = ({ children, style }) => {
         style
       ]}
     >
+      {/* Time Table heading on the left */}
+      <Text style={styles.timetableHeading}>Time Table</Text>
+
       {/* Expand/Collapse Button for now, might change later */}
       <TouchableOpacity 
         style={styles.dateButton} 
@@ -69,7 +72,6 @@ const BottomCard = ({ children, style }) => {
       >
         <MaterialIcons name="calendar-month" size={14} color="#ECDFCC" style={styles.calendarIcon} />
         <Text style={styles.buttonText}>
-          {/* {isExpanded ? '−' : '+'} */}
           {getTodayDate()}
         </Text>
       </TouchableOpacity>
@@ -131,6 +133,14 @@ const styles = StyleSheet.create({
   content: {
     flex: 1,
     marginTop: 10,
+  },
+  timetableHeading: {
+    fontFamily: 'Roboto',
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#222',
+    marginBottom: 8,
+    marginTop: 4,
   },
 });
 

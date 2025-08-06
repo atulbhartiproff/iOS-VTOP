@@ -1,7 +1,8 @@
 import { useRouter } from 'expo-router';
-import AttendanceScreen from '../components/attendanceScreen';
+import App from './(tabs)/home';
 
 export default function Index() {
   const router = useRouter();
-  return <AttendanceScreen router={router} />;
+  // return <AttendanceScreen router={router} />;
+  return <App />; // Render the main app component
 }

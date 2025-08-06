@@ -42,7 +42,7 @@ export default function SubjectDetailScreen() {
               styles.entry,
               {
                 backgroundColor:
-                  item.status === 'Present' ? '#193D2D' : '#3D1919',
+                  item.status === 'Present' || item.status==='On Duty' ? '#193D2D' : '#3D1919',
               },
             ]}
           >
