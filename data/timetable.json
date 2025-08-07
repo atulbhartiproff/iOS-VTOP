@@ -1,0 +1,244 @@
+[
+    {
+        "day": "MON",
+        "course_code": "BSTS301P",
+        "course_name": "Advanced Competitive Coding \u2013 I",
+        "teacher": "FACE (APT)",
+        "room_number": "AB3-413",
+        "timing": {
+            "start": "14:00",
+            "end": "14:50"
+        }
+    },
+    {
+        "day": "MON",
+        "course_code": "BCSE355L",
+        "course_name": "Cloud Architecture Design",
+        "teacher": "PRIYAADHARSHINI M",
+        "room_number": "AB3-403",
+        "timing": {
+            "start": "14:55",
+            "end": "15:45"
+        }
+    },
+    {
+        "day": "MON",
+        "course_code": "BCSE306L",
+        "course_name": "Artificial Intelligence",
+        "teacher": "KAVIPRIYA G",
+        "room_number": "AB3-406",
+        "timing": {
+            "start": "15:50",
+            "end": "16:40"
+        }
+    },
+    {
+        "day": "MON",
+        "course_code": "BCSE302L",
+        "course_name": "Database Systems",
+        "teacher": "ASHOKA RAJAN R",
+        "room_number": "AB3-405",
+        "timing": {
+            "start": "16:45",
+            "end": "17:35"
+        }
+    },
+    {
+        "day": "MON",
+        "course_code": "BCSE324L",
+        "course_name": "Foundations of Blockchain Technology",
+        "teacher": "AVUTHU AVINASH REDDY",
+        "room_number": "AB3-406",
+        "timing": {
+            "start": "17:40",
+            "end": "18:30"
+        }
+    },
+    {
+        "day": "TUE",
+        "course_code": "BCSE302L",
+        "course_name": "Database Systems",
+        "teacher": "ASHOKA RAJAN R",
+        "room_number": "AB3-405",
+        "timing": {
+            "start": "14:00",
+            "end": "14:50"
+        }
+    },
+    {
+        "day": "TUE",
+        "course_code": "BCSE324L",
+        "course_name": "Foundations of Blockchain Technology",
+        "teacher": "AVUTHU AVINASH REDDY",
+        "room_number": "AB3-406",
+        "timing": {
+            "start": "14:55",
+            "end": "15:45"
+        }
+    },
+    {
+        "day": "TUE",
+        "course_code": "BCSE301L",
+        "course_name": "Software Engineering",
+        "teacher": "GANESH N",
+        "room_number": "AB3-408",
+        "timing": {
+            "start": "15:50",
+            "end": "16:40"
+        }
+    },
+    {
+        "day": "TUE",
+        "course_code": "BMAT205L",
+        "course_name": "Discrete Mathematics and Graph Theory",
+        "teacher": "RAJESH KUMAR MOHAPATRA",
+        "room_number": "AB3-404",
+        "timing": {
+            "start": "16:45",
+            "end": "17:35"
+        }
+    },
+    {
+        "day": "WED",
+        "course_code": "BMAT205L",
+        "course_name": "Discrete Mathematics and Graph Theory",
+        "teacher": "RAJESH KUMAR MOHAPATRA",
+        "room_number": "AB3-404",
+        "timing": {
+            "start": "14:00",
+            "end": "14:50"
+        }
+    },
+    {
+        "day": "WED",
+        "course_code": "BSTS301P",
+        "course_name": "Advanced Competitive Coding \u2013 I",
+        "teacher": "FACE (APT)",
+        "room_number": "AB3-413",
+        "timing": {
+            "start": "14:55",
+            "end": "15:45"
+        }
+    },
+    {
+        "day": "WED",
+        "course_code": "BCSE355L",
+        "course_name": "Cloud Architecture Design",
+        "teacher": "PRIYAADHARSHINI M",
+        "room_number": "AB3-403",
+        "timing": {
+            "start": "15:50",
+            "end": "16:40"
+        }
+    },
+    {
+        "day": "WED",
+        "course_code": "BCSE306L",
+        "course_name": "Artificial Intelligence",
+        "teacher": "KAVIPRIYA G",
+        "room_number": "AB3-406",
+        "timing": {
+            "start": "16:45",
+            "end": "17:35"
+        }
+    },
+    {
+        "day": "THU",
+        "course_code": "BCSE306L",
+        "course_name": "Artificial Intelligence",
+        "teacher": "KAVIPRIYA G",
+        "room_number": "AB3-406",
+        "timing": {
+            "start": "14:00",
+            "end": "14:50"
+        }
+    },
+    {
+        "day": "THU",
+        "course_code": "BCSE302L",
+        "course_name": "Database Systems",
+        "teacher": "ASHOKA RAJAN R",
+        "room_number": "AB3-405",
+        "timing": {
+            "start": "14:55",
+            "end": "15:45"
+        }
+    },
+    {
+        "day": "THU",
+        "course_code": "BCSE324L",
+        "course_name": "Foundations of Blockchain Technology",
+        "teacher": "AVUTHU AVINASH REDDY",
+        "room_number": "AB3-406",
+        "timing": {
+            "start": "15:50",
+            "end": "16:40"
+        }
+    },
+    {
+        "day": "THU",
+        "course_code": "BCSE301L",
+        "course_name": "Software Engineering",
+        "teacher": "GANESH N",
+        "room_number": "AB3-408",
+        "timing": {
+            "start": "16:45",
+            "end": "17:35"
+        }
+    },
+    {
+        "day": "THU",
+        "course_code": "BMAT205L",
+        "course_name": "Discrete Mathematics and Graph Theory",
+        "teacher": "RAJESH KUMAR MOHAPATRA",
+        "room_number": "AB3-404",
+        "timing": {
+            "start": "17:40",
+            "end": "18:30"
+        }
+    },
+    {
+        "day": "FRI",
+        "course_code": "BCSE301L",
+        "course_name": "Software Engineering",
+        "teacher": "GANESH N",
+        "room_number": "AB3-408",
+        "timing": {
+            "start": "14:00",
+            "end": "14:50"
+        }
+    },
+    {
+        "day": "FRI",
+        "course_code": "BMAT205L",
+        "course_name": "Discrete Mathematics and Graph Theory",
+        "teacher": "RAJESH KUMAR MOHAPATRA",
+        "room_number": "AB3-404",
+        "timing": {
+            "start": "14:55",
+            "end": "15:45"
+        }
+    },
+    {
+        "day": "FRI",
+        "course_code": "BSTS301P",
+        "course_name": "Advanced Competitive Coding \u2013 I",
+        "teacher": "FACE (APT)",
+        "room_number": "AB3-413",
+        "timing": {
+            "start": "15:50",
+            "end": "16:40"
+        }
+    },
+    {
+        "day": "FRI",
+        "course_code": "BCSE355L",
+        "course_name": "Cloud Architecture Design",
+        "teacher": "PRIYAADHARSHINI M",
+        "room_number": "AB3-403",
+        "timing": {
+            "start": "16:45",
+            "end": "17:35"
+        }
+    }
+]
